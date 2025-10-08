@@ -1,0 +1,86 @@
+public class Balls {
+        static Scanner scanner=new Scanner(System.in);
+        static Integer row=scanner.nextInt();
+         static Integer column=scanner.nextInt();
+         static String arr[][]=new String[row][column];
+         static int ar[]=new int[row];
+         
+         static void insert(String ball,int col) {
+        	 int ma=ar[col]-1;
+        	 ar[col]=ma;
+        	 arr[ma][col]=ball;
+        	 check();	 
+         }
+         
+         static void check() {
+        	 int min=ar[0];
+        	 for(int a:ar) {
+        		 min=Math.min(min, a);
+        	 }
+        	 Boolean boool = true;
+        	 int jan;
+        	 for(int j=row-1;j>=min;j--) {
+        		 jan=j;
+        		 for(int i=0;i<column;i++) {
+        			 Boolean bool=true;
+        			 boool=bool;
+        			 
+        			 if(arr[j][i]==null) {
+        				 bool=false;
+        				 boool=bool;
+        				 break;
+        			 }  }
+        		 if(boool==true) {
+        			 swift(jan);
+        		 }
+        	 }  }
+         static void swift(int j) {
+        	 String dan=arr[j][0];
+        	 Boolean bool=true;
+        	 for (int i = 1; i < column; i++) {
+        		 if(dan.equals(arr[j][i])) {
+        			 bool=false;
+        		 }}
+        		 if(bool==true) {
+        			 for (int k = j; k >0; k--) {
+        				 for (int k2 = 0; k2 <column; k2++) {
+        					 arr[k][k2]=arr[k-1][k2];
+							
+						}	
+					}
+        			 for (int i = 0; i < ar.length; i++) {
+        				 ar[i]=ar[i]+1;
+						
+					}
+        			 check();
+        		 
+				
+			}
+        	
+         }
+         static void display() {
+        	 for (int i = 0; i < row; i++) {
+        		 for (int j = 0; j < column; j++) {
+        			 System.out.print(arr[i][j]+" ");
+					
+				}
+        		 System.out.println();
+				
+			}
+         }
+         
+         public static void main(String[] args) {
+			int i=0;
+			while(i<row) {
+				ar[i]=row;
+				i++;
+			}
+		 insert(scanner.nextLine(),scanner.nextInt());
+			
+			display();
+	
+		   
+		}
+		
+	
+}
